@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/CLionProjects/OOP5/Observer.h
+
+C:/CLionProjects/OOP5/Part1Examples.cpp
+iostream
+-
+Observer.h
+C:/CLionProjects/OOP5/Observer.h
+Subject.h
+C:/CLionProjects/OOP5/Subject.h
+
+C:/CLionProjects/OOP5/Part2Examples.cpp
+iostream
+-
+RushHour.h
+C:/CLionProjects/OOP5/RushHour.h
+Printer.h
+C:/CLionProjects/OOP5/Printer.h
+
+C:/CLionProjects/OOP5/Printer.h
+RushHour.h
+C:/CLionProjects/OOP5/RushHour.h
+iostream
+-
+
+C:/CLionProjects/OOP5/Subject.h
+
+C:/CLionProjects/OOP5/main.cpp
+iostream
+-
+
