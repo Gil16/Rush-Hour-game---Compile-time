@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/CLionProjects/OOP5/Part1Examples.cpp" "C:/CLionProjects/OOP5/cmake-build-debug/CMakeFiles/OOP5.dir/Part1Examples.cpp.obj"
   "C:/CLionProjects/OOP5/Part2Examples.cpp" "C:/CLionProjects/OOP5/cmake-build-debug/CMakeFiles/OOP5.dir/Part2Examples.cpp.obj"
-  "C:/CLionProjects/OOP5/main.cpp" "C:/CLionProjects/OOP5/cmake-build-debug/CMakeFiles/OOP5.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

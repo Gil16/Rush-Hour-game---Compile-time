@@ -38,14 +38,14 @@ int main(){
 
     try {
         (s += a);
-    } catch(ObserverAlreadyListening& e) {
+    } catch(ObserverAlreadyKnownToSubject& e) {
         std::cout << "Should be printed" << std::endl;
     }
 
     try {
         AirConditioner d;
         s -= d;
-    } catch(ObserverNotListening& e){
+    } catch(ObserverUnknownToSubject& e){
         std::cout << "Should be printed" << std::endl;
     }
 

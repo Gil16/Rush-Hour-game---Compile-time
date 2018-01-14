@@ -9,7 +9,7 @@
  * Usage: let T be a game type, in order to print its data, use Printer<T>::print().
  * Pass in std::cout in order to print to the console.
  */
-
+/*
 template<typename>
 struct Printer;
 
@@ -63,5 +63,5 @@ struct Printer<BoardCell<Type, Dir, Length>>{
         output << printed;
     }
 };
-
+*/
 #endif //PART2_PRINTER_H

@@ -104,9 +104,6 @@
 		<Unit filename="C:/CLionProjects/OOP5/TransposeList.h">
 			<Option target="OOP5"/>
 		</Unit>
-		<Unit filename="C:/CLionProjects/OOP5/main.cpp">
-			<Option target="OOP5"/>
-		</Unit>
 		<Unit filename="C:/CLionProjects/OOP5/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
