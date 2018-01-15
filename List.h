@@ -5,8 +5,8 @@
 template <typename T, typename... TT>
 struct List<T, TT...>{
 public:
-    typedef T head;
-    typedef List<TT...> next;
+    typedef typename T head;
+    typedef typename List<TT...> next;
     constexpr static int size = sizeof...(TT) + 1;      // can we do it like this?
 };
 /*      needed?
@@ -48,7 +48,7 @@ struct SetAtIndex<N, T, List<L, LL...> >{
 
 template<int N, typename T, typename L, typename... LL>
 struct SetAtIndex<0, T, List<L, LL...>>{
-    typedef List<T, LL...> list;
+    List<T, LL...> list;
 };
 
 #endif //OOP5_LIST_H

@@ -5,9 +5,10 @@
 
 template<List<T, TT...> L,typename T, typename... TT>
 struct GameBoard<List<T, TT...> >{
-    constexpr typedef List board = L;
+    static List<T, TT...> board = L;
     constexpr static int width = sizeof(T);
     constexpr static int length = sizeof(TT...) + 1;
+
 };
 
 #endif //OOP5_GAMEBOARD_H

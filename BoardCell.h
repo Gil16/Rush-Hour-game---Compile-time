@@ -6,8 +6,8 @@
 
 template<CellType T, Direction D, int N>
 struct BoardCell<T, D, N>{
-    constexpr typedef CellType type = T;
-    constexpr typedef Direction direction = D;
+    constexpr CellType type = T;
+    constexpr Direction direction = D;
     constexpr static int length = N;
 };
 
