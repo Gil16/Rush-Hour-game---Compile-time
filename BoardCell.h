@@ -1,12 +1,14 @@
 #ifndef OOP5_BOARDCELL_H
 #define OOP5_BOARDCELL_H
 
+#include "CellType.h"
+#include "Direction.h"
 
-template<typename T, typename D, int n>
-struct BoardCell<T, D, n>{
-    typedef T type;
-    typedef D direction;
-    constexpr static int length = n;
+template<CellType T, Direction D, int N>
+struct BoardCell<T, D, N>{
+    constexpr typedef CellType type = T;
+    constexpr typedef Direction direction = D;
+    constexpr static int length = N;
 };
 
 #endif //OOP5_BOARDCELL_H

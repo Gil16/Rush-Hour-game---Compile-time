@@ -2,25 +2,25 @@
 #define OOP5_UTILITIES_H
 
 
-template<bool B, typename T, typename R>    // bool B  -> is needed?
+template<typename T, typename R>
 struct Conditional<true, T, R>{
-    typedef T value;       // what do i put here??   maybe nothing?
+    typedef T value;
 };
 
-template<bool B, typename T, typename R>    // bool B  -> is needed?
+template<typename T, typename R>
 struct Conditional<false, T, R>{
-    typedef R value;      // what do i put here??   maybe nothing?
+    typedef R value;
 };
 
 
-template<bool B, int X,int Y>   // bool B  -> is needed?
+template<int X,int Y>
 struct ConditionalInteger<true, X, Y>{
-    static const int value = X;
+    constexpr static int value = X;
 };
 
-template<bool B, int X,int Y>   // bool B  -> is needed?
+template<int X,int Y>
 struct ConditionalInteger<false, X, Y>{
-    static const int value = Y;
+    constexpr static int value = Y;
 };
 
 

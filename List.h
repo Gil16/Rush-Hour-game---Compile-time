@@ -17,14 +17,13 @@ public:
 };
 */
 
-// not complete, i think        ,  maybe an empty list case is needed??
-template <typename T, typename... L>   // List as parameter?
-struct PrependList<List<T>, L>{
+template <typename T, typename... TT, List<TT...> L>
+struct PrependList<T, L>{
 public:
-    typedef PrependList<List<T...>, typename PrependList<L>::list>::list list;      // no clue, is it ok?
+    typedef List<T,TT...> list;
 };
 
-////////////////////////    from the tutorials
+
 template<int N, typename T>
 struct GetAtIndex {};
 
@@ -37,15 +36,19 @@ template<typename T, typename... L>
 struct GetAtIndex<0, List<T, L... > > {
     typedef T value;
 };
-//////////////////////////
 
 
 template<int N, typename T, typename ...L>
 struct SetAtIndex{};
 
-template<int N, typename T, typename ...L>
-struct SetAtIndex<N, T, List<L...> >{
-    typedef typename SetAtIndex<>::list list;   // need to continue it somehow
+template<int N, typename T, typename L, typename... LL>
+struct SetAtIndex<N, T, List<L, LL...> >{
+    typedef typename PrependList<L,SetAtIndex<N-1, T, List<LL...> > >::list list;
+};
+
+template<int N, typename T, typename L, typename... LL>
+struct SetAtIndex<0, T, List<L, LL...>>{
+    typedef List<T, LL...> list;
 };
 
 #endif //OOP5_LIST_H
