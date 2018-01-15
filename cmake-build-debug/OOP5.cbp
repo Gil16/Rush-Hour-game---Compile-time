@@ -80,6 +80,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/CLionProjects/OOP5/BoardCell.h">
+			<Option target="OOP5"/>
+		</Unit>
+		<Unit filename="C:/CLionProjects/OOP5/CellType.h">
+			<Option target="OOP5"/>
+		</Unit>
+		<Unit filename="C:/CLionProjects/OOP5/Direction.h">
+			<Option target="OOP5"/>
+		</Unit>
+		<Unit filename="C:/CLionProjects/OOP5/GameBoard.h">
+			<Option target="OOP5"/>
+		</Unit>
+		<Unit filename="C:/CLionProjects/OOP5/List.h">
+			<Option target="OOP5"/>
+		</Unit>
+		<Unit filename="C:/CLionProjects/OOP5/MoveVehicle.h">
+			<Option target="OOP5"/>
+		</Unit>
 		<Unit filename="C:/CLionProjects/OOP5/OOP5EventException.h">
 			<Option target="OOP5"/>
 		</Unit>
@@ -102,6 +120,9 @@
 			<Option target="OOP5"/>
 		</Unit>
 		<Unit filename="C:/CLionProjects/OOP5/TransposeList.h">
+			<Option target="OOP5"/>
+		</Unit>
+		<Unit filename="C:/CLionProjects/OOP5/Utilities.h">
 			<Option target="OOP5"/>
 		</Unit>
 		<Unit filename="C:/CLionProjects/OOP5/CMakeLists.txt">
