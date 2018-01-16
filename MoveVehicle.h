@@ -2,6 +2,7 @@
 #define OOP5_MOVEVEHICLE_H
 
 #include "CellType.h"
+#include "BoardCell.h"
 #include "Direction.h"
 #include "GameBoard.h"
 #include "List.h"
@@ -43,7 +44,7 @@ struct MoveVehicle<GB, R, C, D, A>{
     if((D == LEFT) || (D == UP)){
         static_assert(CheckMove<getRow, firstInstance-A, A, getRow::head::type, "You cannot move LEFT, there is a car!");
     }
-    
+
 
 
 };
@@ -86,6 +87,29 @@ struct CheckMove<List<T>, 0, 1, EMPTY>{
     typedef typename bool value = true;
 };
 
+// LOCATION here is the first instance of the car on the LEFT
+template<typename T, int LOCATION, int LENGTH, CellType D>
+struct OneMove<List<T>, LOCATION, LENGTH, RIGHT>{
+    typedef GetAtIndex<LOCATION, List<T>>::value CurrentCell;
+    typedef typename SetAtIndex<LOCATION, BoardCell<EMPTY, UP, 0>, SetAtIndex<LOCATION+LENGTH, CurrentCell, List<T> > >;
+};
 
+// LOCATION here is the first instance of the car on the RIGHT
+template<typename T, int LOCATION, int LENGTH, CellType D>
+struct OneMove<List<T>, LOCATION, LENGTH, LEFT>{
+    typedef GetAtIndex<LOCATION, List<T>>::value CurrentCell;
+    typedef typename SetAtIndex<LOCATION-LENGTH, CurrentCell , SetAtIndex<LOCATION, BoardCell<EMPTY, UP, 0>, List<T> > >;
+};
+
+
+template<typename T, int LOCATION ,int N>
+struct ManyMoves<List<T>, LOCATION, N >{
+
+};
+
+template<>
+struct ManyMoves<>{
+
+};
 
 #endif //OOP5_MOVEVEHICLE_H
