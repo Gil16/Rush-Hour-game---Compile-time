@@ -6,7 +6,14 @@ CMakeFiles/OOP5.dir/Part1Examples.cpp.obj: ../Observer.h
 CMakeFiles/OOP5.dir/Part1Examples.cpp.obj: ../Part1Examples.cpp
 CMakeFiles/OOP5.dir/Part1Examples.cpp.obj: ../Subject.h
 
+CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../BoardCell.h
+CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../CellType.h
+CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../Direction.h
+CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../GameBoard.h
+CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../List.h
+CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../MoveVehicle.h
 CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../Part2Examples.cpp
 CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../Printer.h
 CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../RushHour.h
+CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: ../TransposeList.h
 

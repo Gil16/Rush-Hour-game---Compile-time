@@ -7,6 +7,13 @@ CMakeFiles/OOP5.dir/Part1Examples.cpp.obj
  C:/CLionProjects/OOP5/Part1Examples.cpp
  C:/CLionProjects/OOP5/Subject.h
 CMakeFiles/OOP5.dir/Part2Examples.cpp.obj
+ C:/CLionProjects/OOP5/BoardCell.h
+ C:/CLionProjects/OOP5/CellType.h
+ C:/CLionProjects/OOP5/Direction.h
+ C:/CLionProjects/OOP5/GameBoard.h
+ C:/CLionProjects/OOP5/List.h
+ C:/CLionProjects/OOP5/MoveVehicle.h
  C:/CLionProjects/OOP5/Part2Examples.cpp
  C:/CLionProjects/OOP5/Printer.h
  C:/CLionProjects/OOP5/RushHour.h
+ C:/CLionProjects/OOP5/TransposeList.h

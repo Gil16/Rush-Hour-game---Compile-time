@@ -1,11 +1,8 @@
 #ifndef OOP5_MOVEVEHICLE_H
 #define OOP5_MOVEVEHICLE_H
 
-#include "CellType.h"
 #include "BoardCell.h"
-#include "Direction.h"
 #include "GameBoard.h"
-#include "List.h"
 #include "TransposeList.h"
 
 

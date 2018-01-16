@@ -6,6 +6,30 @@
 
 #IncludeRegexTransform: 
 
+C:/CLionProjects/OOP5/BoardCell.h
+CellType.h
+C:/CLionProjects/OOP5/CellType.h
+Direction.h
+C:/CLionProjects/OOP5/Direction.h
+
+C:/CLionProjects/OOP5/CellType.h
+
+C:/CLionProjects/OOP5/Direction.h
+
+C:/CLionProjects/OOP5/GameBoard.h
+List.h
+C:/CLionProjects/OOP5/List.h
+
+C:/CLionProjects/OOP5/List.h
+
+C:/CLionProjects/OOP5/MoveVehicle.h
+BoardCell.h
+C:/CLionProjects/OOP5/BoardCell.h
+GameBoard.h
+C:/CLionProjects/OOP5/GameBoard.h
+TransposeList.h
+C:/CLionProjects/OOP5/TransposeList.h
+
 C:/CLionProjects/OOP5/OOP5EventException.h
 exception
 -
@@ -35,6 +59,8 @@ iostream
 -
 
 C:/CLionProjects/OOP5/RushHour.h
+MoveVehicle.h
+C:/CLionProjects/OOP5/MoveVehicle.h
 
 C:/CLionProjects/OOP5/Subject.h
 Observer.h
@@ -45,4 +71,10 @@ list
 C:/CLionProjects/OOP5/list
 algorithm
 -
+
+C:/CLionProjects/OOP5/TransposeList.h
+RushHour.h
+C:/CLionProjects/OOP5/RushHour.h
+List.h
+C:/CLionProjects/OOP5/List.h
 
