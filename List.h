@@ -9,13 +9,23 @@ public:
     typedef typename List<TT...> next;
     constexpr static int size = sizeof...(TT) + 1;      // can we do it like this?
 };
-/*      needed?
-template <>
+
+template <typename T>
+struct List<T>{
+public:
+    typedef typename T head;
+    typedef typename T next = nil;
+    constexpr static int size = 1;
+};
+
+template <typename T>
 struct List<>{
 public:
+    typedef typename T head = nil;
+    typedef typename T next = nil;
     constexpr static int size = 0;
 };
-*/
+
 
 template <typename T, typename... TT, List<TT...> L>
 struct PrependList<T, L>{
