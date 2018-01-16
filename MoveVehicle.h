@@ -40,13 +40,12 @@ struct MoveVehicle<GB, R, C, D, A>{
     if((D == RIGHT) || (D == DOWN)){
         static_assert(CheckMove<getRow, firstInstance+(GetAtIndex<C,getRow>::value::length), A, getRow::head::type>,
                                             "You cannot move RIGHT, there is a car!");
+        ManyMoves<getRow, firstInstance, A, GetAtIndex<C,getRow>::value::length, RIGHT>;
     }
     if((D == LEFT) || (D == UP)){
         static_assert(CheckMove<getRow, firstInstance-A, A, getRow::head::type, "You cannot move LEFT, there is a car!");
+        ManyMoves<getRow, firstInstance, A, GetAtIndex<C,getRow>::value::length, LEFT>;
     }
-
-
-
 };
 
 
@@ -88,28 +87,32 @@ struct CheckMove<List<T>, 0, 1, EMPTY>{
 };
 
 // LOCATION here is the first instance of the car on the LEFT
-template<typename T, int LOCATION, int LENGTH, CellType D>
+template<typename T, int LOCATION, int LENGTH, Direction D>
 struct OneMove<List<T>, LOCATION, LENGTH, RIGHT>{
     typedef GetAtIndex<LOCATION, List<T>>::value CurrentCell;
-    typedef typename SetAtIndex<LOCATION, BoardCell<EMPTY, UP, 0>, SetAtIndex<LOCATION+LENGTH, CurrentCell, List<T> > >;
+    typedef typename SetAtIndex<LOCATION, BoardCell<EMPTY, UP, 0>, SetAtIndex<LOCATION+LENGTH, CurrentCell, List<T> > >::list list;
 };
 
-// LOCATION here is the first instance of the car on the RIGHT
-template<typename T, int LOCATION, int LENGTH, CellType D>
+template<typename T, int LOCATION, int LENGTH, Direction D>
 struct OneMove<List<T>, LOCATION, LENGTH, LEFT>{
     typedef GetAtIndex<LOCATION, List<T>>::value CurrentCell;
-    typedef typename SetAtIndex<LOCATION-LENGTH, CurrentCell , SetAtIndex<LOCATION, BoardCell<EMPTY, UP, 0>, List<T> > >;
+    typedef typename SetAtIndex<LOCATION+LENGTH, BoardCell<EMPTY, UP, 0> , SetAtIndex<LOCATION-1, CurrentCell , List<T> > >::list list;
 };
 
 
-template<typename T, int LOCATION ,int N>
-struct ManyMoves<List<T>, LOCATION, N >{
-
+template<typename T, int LOCATION ,int STEPS, int LENGTH, Direction D>
+struct ManyMoves<List<T>, LOCATION, STEPS, LENGTH, RIGHT>{
+    typedef typename ManyMoves<OneMove<List<T>, LOCATION, LENGTH, D>::list, LOCATION+1, STEPS-1, LENGTH, RIGHT >::list list;
 };
 
-template<>
-struct ManyMoves<>{
+template<typename T, int LOCATION ,int STEPS, int LENGTH, Direction D>
+struct ManyMoves<List<T>, LOCATION, STEPS, LENGTH, LEFT>{
+    typedef typename ManyMoves<OneMove<List<T>, LOCATION, LENGTH, D>::list, LOCATION-1, STEPS-1, LENGTH, LEFT >::list list;
+};
 
+template<typename T, int LOCATION ,int STEPS, int LENGTH, Direction D>
+struct ManyMoves<List<T>, LOCATION, 0, LENGTH>{
+    typedef List<T> list;
 };
 
 #endif //OOP5_MOVEVEHICLE_H
