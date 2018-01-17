@@ -17,7 +17,7 @@ template<GameBoard T, typename L, typename... LL>
 struct CheckSolution<T, List<L, LL...> >{
     typedef GetCarRowNumber<T::board, L::type, 0, T::board::width, false>::value aRow;
     typedef FindFirstInstanceOfACar<GetAtIndex<aRow, T::board>::value, GetAtIndex<aRow, T::board>::value::head::type, L::type, 0>::first aCol;
-    typedef typename CheckSolution<MoveVehicle<T, aRow, aCol, L::direction, L::amount> , List<LL...> >::result result;
+    typedef typename CheckSolution<MoveVehicle<T, aRow, aCol, L::direction, L::amount>:: , List<LL...> >::result result;
 };
 
 template<GameBoard T, typename L, typename... LL>

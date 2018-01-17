@@ -8,7 +8,7 @@ struct List{
 public:
     typedef T head;
     typedef List<TT...> next;
-    constexpr static int size = sizeof...(TT) + 1;      // can we do it like this?
+    constexpr static int size = sizeof...(TT) + 1;
 };
 
 template <typename T>
