@@ -7,22 +7,22 @@
 
 
 template<CellType T, Direction D, int N>
-struct Move<T, D, N>{
+struct Move{
     static_assert(T != EMPTY, "The Car type you enter was EMPTY, and it's not allowed!");
-    constexpr CellType type = T;
-    constexpr Direction direction = D;
+    constexpr static CellType type = T;
+    constexpr static Direction direction = D;
     constexpr static int amount = N;
 };
 
 
-template<GameBoard GB, int R, int C, Direction D, int A>
-struct MoveVehicle<GB, R, C, D, A>{
-    constexpr typedef GameBoard board = GB;
+template<typename GB, int R, int C, Direction D, int A>
+struct MoveVehicle{
+    typedef typename GB::board board;
     static_assert((R >= board::length) || (R < 0), "The given Row number is incorrect");
     static_assert((C >= board::width) || (C < 0), "The given Col number is incorrect");
-    static_assert(GetAtIndex<C, GetAtIndex<R, board::board>::value >::value::type != EMPTY , "The given Cell is EMPTY");
+    static_assert(GetAtIndex<C, typename GetAtIndex<R, board>::value>::value::type != EMPTY , "The given Cell is EMPTY");
 
-    int temp = GetAtIndex<C, GetAtIndex<R, board::board>::value >::value::direction;
+    int temp = GetAtIndex<C, typename GetAtIndex<R, board>::value >::value::direction;
     static_assert((temp % 2) ? ((temp == D) || ((temp + 1) == D)) : ((temp == D) || ((temp - 1) == D)),
                                                                 "The given direction is not the excpected");
     static bool flag= false;

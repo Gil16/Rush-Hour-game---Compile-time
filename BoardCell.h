@@ -5,10 +5,10 @@
 #include "Direction.h"
 
 template<CellType T, Direction D, int N>
-struct BoardCell<T, D, N>{
-    typedef typename T type;
-    typedef typename D direction;
-    typedef N length;
+struct BoardCell{
+    constexpr static CellType type = T;
+    constexpr static Direction direction = D;
+    constexpr static int length = N;
 };
 
 #endif //OOP5_BOARDCELL_H

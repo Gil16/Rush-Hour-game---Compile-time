@@ -1,34 +1,30 @@
 #ifndef OOP5_LIST_H
 #define OOP5_LIST_H
 
+struct NIL{};
 
 template <typename T, typename... TT>
-struct List<T, TT...>{
+struct List{
 public:
-    typedef typename T head;
-    typedef typename List<TT...> next;
+    typedef T head;
+    typedef List<TT...> next;
     constexpr static int size = sizeof...(TT) + 1;      // can we do it like this?
 };
 
 template <typename T>
 struct List<T>{
 public:
-    typedef typename T head;
-    typedef typename List<> next;
+    typedef T head;
+    typedef NIL next;
     constexpr static int size = 1;
 };
 
-template <typename T>
-struct List<>{
-public:
-    typedef typename List<> head;
-    typedef typename List<> next;
-    constexpr static int size = 0;
-};
 
+template <typename T, typename... TT>
+struct PrependList{};
 
-template <typename T, typename... TT, List<TT...> L>
-struct PrependList<T, L>{
+template <typename T, typename... TT>
+struct PrependList<T,  List<TT...>>{
 public:
     typedef List<T,TT...> list;
 };
@@ -48,17 +44,17 @@ struct GetAtIndex<0, List<T, L... > > {
 };
 
 
-template<int N, typename T, typename ...L>
+template<int N, typename T, typename L, typename ...LL>
 struct SetAtIndex{};
 
 template<int N, typename T, typename L, typename... LL>
 struct SetAtIndex<N, T, List<L, LL...> >{
-    typedef typename PrependList<L,SetAtIndex<N-1, T, List<LL...> > >::list list;
+    typedef typename PrependList<L,typename SetAtIndex<N-1, T, List<LL...>>::list>::list list;
 };
 
-template<int N, typename T, typename L, typename... LL>
+template<typename T, typename L, typename... LL>
 struct SetAtIndex<0, T, List<L, LL...>>{
-    List<T, LL...> list;
+    typedef List<T, LL...> list;
 };
 
 #endif //OOP5_LIST_H

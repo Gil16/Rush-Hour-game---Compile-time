@@ -3,12 +3,12 @@
 
 #include "List.h"
 
-template<List<T, TT...> L,typename T, typename... TT>
-struct GameBoard<List<T, TT...> >{
-    typedef List<T, TT...> board = L;
-    constexpr static int width = sizeof(T);
-    constexpr static int length = sizeof(TT...) + 1;
 
+template<typename T>
+struct GameBoard{
+    typedef T board;
+    constexpr static int width = sizeof(board::head);
+    constexpr static int length = sizeof(board);
 };
 
 #endif //OOP5_GAMEBOARD_H
