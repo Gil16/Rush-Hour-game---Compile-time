@@ -24,13 +24,14 @@ struct MoveVehicle<GB, R, C, D, A>{
 
     int temp = GetAtIndex<C, GetAtIndex<R, board::board>::value >::value::direction;
     static_assert((temp % 2) ? ((temp == D) || ((temp + 1) == D)) : ((temp == D) || ((temp - 1) == D)),
-                                                                "The given direction is no the excpected");
-
+                                                                "The given direction is not the excpected");
+    static bool flag= false;
     if((D == UP) || (D == DOWN)){
         board = Transpose<board>::matrix;
         int temp = R;
         R = C;
         C = temp;
+        flag = true;
     }
     typedef GetAtIndex<R, board::board>::value getRow;
     static int firstInstance = FindFirstInstanceOfACar<getRow, getRow::head::type, GetAtIndex<C,getRow>::value::type,0>;
@@ -42,6 +43,10 @@ struct MoveVehicle<GB, R, C, D, A>{
     if((D == LEFT) || (D == UP)){
         static_assert(CheckMove<getRow, firstInstance-A, A, getRow::head::type, "You cannot move LEFT, there is a car!");
         ManyMoves<getRow, firstInstance, A, GetAtIndex<C,getRow>::value::length, LEFT>;
+    }
+    if(flag == true){
+        board = Transpose<board>::matrix;
+        flag = false;
     }
 };
 

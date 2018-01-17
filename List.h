@@ -14,15 +14,15 @@ template <typename T>
 struct List<T>{
 public:
     typedef typename T head;
-    typedef typename T next = nil;
+    typedef typename List<> next;
     constexpr static int size = 1;
 };
 
 template <typename T>
 struct List<>{
 public:
-    typedef typename T head = nil;
-    typedef typename T next = nil;
+    typedef typename List<> head;
+    typedef typename List<> next;
     constexpr static int size = 0;
 };
 
