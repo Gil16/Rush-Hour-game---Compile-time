@@ -1,22 +1,21 @@
 #ifndef OOP5_LIST_H
 #define OOP5_LIST_H
 
-struct NIL{};
+template <typename... T>
+struct List;
 
 template <typename T, typename... TT>
-struct List{
+struct List<T, TT...>{
 public:
     typedef T head;
     typedef List<TT...> next;
     constexpr static int size = sizeof...(TT) + 1;
 };
 
-template <typename T>
-struct List<T>{
+template <>
+struct List<>{
 public:
-    typedef T head;
-    typedef NIL next;
-    constexpr static int size = 1;
+    constexpr static int size = 0;
 };
 
 

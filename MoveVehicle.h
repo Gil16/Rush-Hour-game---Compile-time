@@ -16,7 +16,7 @@ struct Move{
 
 template<typename L, CellType CURRTYPE, CellType CARTYPE, int N>
 struct FindFirstInstanceOfACar{
-    typedef typename FindFirstInstanceOfACar<typename L::next, L::head::type, CARTYPE, N+1>::first first;
+    constexpr static int first = FindFirstInstanceOfACar<typename L::next, L::head::type, CARTYPE, N+1>::first;
 };
 
 template<typename L , CellType T, int N>
