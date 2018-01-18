@@ -104,9 +104,6 @@
 		<Unit filename="C:/CLionProjects/OOP5/Observer.h">
 			<Option target="OOP5"/>
 		</Unit>
-		<Unit filename="C:/CLionProjects/OOP5/Part1Examples.cpp">
-			<Option target="OOP5"/>
-		</Unit>
 		<Unit filename="C:/CLionProjects/OOP5/Part2Examples.cpp">
 			<Option target="OOP5"/>
 		</Unit>
@@ -123,6 +120,9 @@
 			<Option target="OOP5"/>
 		</Unit>
 		<Unit filename="C:/CLionProjects/OOP5/Utilities.h">
+			<Option target="OOP5"/>
+		</Unit>
+		<Unit filename="C:/CLionProjects/OOP5/lev_test.cpp">
 			<Option target="OOP5"/>
 		</Unit>
 		<Unit filename="C:/CLionProjects/OOP5/CMakeLists.txt">

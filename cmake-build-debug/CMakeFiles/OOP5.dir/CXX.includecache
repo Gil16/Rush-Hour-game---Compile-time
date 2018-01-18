@@ -30,20 +30,6 @@ C:/CLionProjects/OOP5/GameBoard.h
 TransposeList.h
 C:/CLionProjects/OOP5/TransposeList.h
 
-C:/CLionProjects/OOP5/OOP5EventException.h
-exception
--
-
-C:/CLionProjects/OOP5/Observer.h
-
-C:/CLionProjects/OOP5/Part1Examples.cpp
-iostream
--
-Observer.h
-C:/CLionProjects/OOP5/Observer.h
-Subject.h
-C:/CLionProjects/OOP5/Subject.h
-
 C:/CLionProjects/OOP5/Part2Examples.cpp
 iostream
 -
@@ -62,19 +48,23 @@ C:/CLionProjects/OOP5/RushHour.h
 MoveVehicle.h
 C:/CLionProjects/OOP5/MoveVehicle.h
 
-C:/CLionProjects/OOP5/Subject.h
-Observer.h
-C:/CLionProjects/OOP5/Observer.h
-OOP5EventException.h
-C:/CLionProjects/OOP5/OOP5EventException.h
-list
-C:/CLionProjects/OOP5/list
-algorithm
--
-
 C:/CLionProjects/OOP5/TransposeList.h
 RushHour.h
 C:/CLionProjects/OOP5/RushHour.h
 List.h
 C:/CLionProjects/OOP5/List.h
+
+C:/CLionProjects/OOP5/Utilities.h
+
+C:/CLionProjects/OOP5/lev_test.cpp
+iostream
+-
+typeinfo
+-
+RushHour.h
+C:/CLionProjects/OOP5/RushHour.h
+Printer.h
+C:/CLionProjects/OOP5/Printer.h
+Utilities.h
+C:/CLionProjects/OOP5/Utilities.h
 

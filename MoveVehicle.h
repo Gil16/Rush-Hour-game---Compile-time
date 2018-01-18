@@ -54,6 +54,11 @@ struct CheckMove<T, 0, 1, EMPTY>{
     constexpr static bool value = true;
 };
 
+template<typename T, int LOCATION, CellType TYPE>
+struct CheckMove<T, LOCATION, 0, TYPE>{
+    constexpr static bool value = true;
+};
+
 // LOCATION here is the first instance of the car on the LEFT
 template<typename T, int LOCATION, int LENGTH, Direction D>
 struct OneMove{

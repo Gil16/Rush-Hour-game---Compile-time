@@ -122,33 +122,6 @@ OOP5/fast:
 	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/build
 .PHONY : OOP5/fast
 
-Part1Examples.obj: Part1Examples.cpp.obj
-
-.PHONY : Part1Examples.obj
-
-# target to build an object file
-Part1Examples.cpp.obj:
-	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/Part1Examples.cpp.obj
-.PHONY : Part1Examples.cpp.obj
-
-Part1Examples.i: Part1Examples.cpp.i
-
-.PHONY : Part1Examples.i
-
-# target to preprocess a source file
-Part1Examples.cpp.i:
-	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/Part1Examples.cpp.i
-.PHONY : Part1Examples.cpp.i
-
-Part1Examples.s: Part1Examples.cpp.s
-
-.PHONY : Part1Examples.s
-
-# target to generate assembly for a file
-Part1Examples.cpp.s:
-	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/Part1Examples.cpp.s
-.PHONY : Part1Examples.cpp.s
-
 Part2Examples.obj: Part2Examples.cpp.obj
 
 .PHONY : Part2Examples.obj
@@ -176,6 +149,33 @@ Part2Examples.cpp.s:
 	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/Part2Examples.cpp.s
 .PHONY : Part2Examples.cpp.s
 
+lev_test.obj: lev_test.cpp.obj
+
+.PHONY : lev_test.obj
+
+# target to build an object file
+lev_test.cpp.obj:
+	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/lev_test.cpp.obj
+.PHONY : lev_test.cpp.obj
+
+lev_test.i: lev_test.cpp.i
+
+.PHONY : lev_test.i
+
+# target to preprocess a source file
+lev_test.cpp.i:
+	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/lev_test.cpp.i
+.PHONY : lev_test.cpp.i
+
+lev_test.s: lev_test.cpp.s
+
+.PHONY : lev_test.s
+
+# target to generate assembly for a file
+lev_test.cpp.s:
+	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/lev_test.cpp.s
+.PHONY : lev_test.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -185,12 +185,12 @@ help:
 	@echo ... OOP5
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Part1Examples.obj
-	@echo ... Part1Examples.i
-	@echo ... Part1Examples.s
 	@echo ... Part2Examples.obj
 	@echo ... Part2Examples.i
 	@echo ... Part2Examples.s
+	@echo ... lev_test.obj
+	@echo ... lev_test.i
+	@echo ... lev_test.s
 .PHONY : help
 
 

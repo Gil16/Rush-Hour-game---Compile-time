@@ -19,6 +19,11 @@ struct IsCarHere<T, CARTYPE, 1, TYPE>{
     constexpr static bool value = false;
 };
 
+template<typename T, CellType CARTYPE>
+struct IsCarHere<T, CARTYPE, 1, CARTYPE>{
+    constexpr static bool value = true;
+};
+
 
 // The List<T> here is the GameBoard -> I'm lazy to change it.
 template<typename T, CellType CARTYPE, int LENGTH, int WIDTH, bool B>

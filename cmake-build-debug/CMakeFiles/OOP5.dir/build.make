@@ -56,28 +56,28 @@ include CMakeFiles/OOP5.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/OOP5.dir/flags.make
 
-CMakeFiles/OOP5.dir/Part1Examples.cpp.obj: CMakeFiles/OOP5.dir/flags.make
-CMakeFiles/OOP5.dir/Part1Examples.cpp.obj: ../Part1Examples.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\CLionProjects\OOP5\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OOP5.dir/Part1Examples.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\OOP5.dir\Part1Examples.cpp.obj -c C:\CLionProjects\OOP5\Part1Examples.cpp
+CMakeFiles/OOP5.dir/lev_test.cpp.obj: CMakeFiles/OOP5.dir/flags.make
+CMakeFiles/OOP5.dir/lev_test.cpp.obj: ../lev_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\CLionProjects\OOP5\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OOP5.dir/lev_test.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\OOP5.dir\lev_test.cpp.obj -c C:\CLionProjects\OOP5\lev_test.cpp
 
-CMakeFiles/OOP5.dir/Part1Examples.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OOP5.dir/Part1Examples.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\CLionProjects\OOP5\Part1Examples.cpp > CMakeFiles\OOP5.dir\Part1Examples.cpp.i
+CMakeFiles/OOP5.dir/lev_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OOP5.dir/lev_test.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\CLionProjects\OOP5\lev_test.cpp > CMakeFiles\OOP5.dir\lev_test.cpp.i
 
-CMakeFiles/OOP5.dir/Part1Examples.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OOP5.dir/Part1Examples.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\CLionProjects\OOP5\Part1Examples.cpp -o CMakeFiles\OOP5.dir\Part1Examples.cpp.s
+CMakeFiles/OOP5.dir/lev_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OOP5.dir/lev_test.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\CLionProjects\OOP5\lev_test.cpp -o CMakeFiles\OOP5.dir\lev_test.cpp.s
 
-CMakeFiles/OOP5.dir/Part1Examples.cpp.obj.requires:
+CMakeFiles/OOP5.dir/lev_test.cpp.obj.requires:
 
-.PHONY : CMakeFiles/OOP5.dir/Part1Examples.cpp.obj.requires
+.PHONY : CMakeFiles/OOP5.dir/lev_test.cpp.obj.requires
 
-CMakeFiles/OOP5.dir/Part1Examples.cpp.obj.provides: CMakeFiles/OOP5.dir/Part1Examples.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/Part1Examples.cpp.obj.provides.build
-.PHONY : CMakeFiles/OOP5.dir/Part1Examples.cpp.obj.provides
+CMakeFiles/OOP5.dir/lev_test.cpp.obj.provides: CMakeFiles/OOP5.dir/lev_test.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\OOP5.dir\build.make CMakeFiles/OOP5.dir/lev_test.cpp.obj.provides.build
+.PHONY : CMakeFiles/OOP5.dir/lev_test.cpp.obj.provides
 
-CMakeFiles/OOP5.dir/Part1Examples.cpp.obj.provides.build: CMakeFiles/OOP5.dir/Part1Examples.cpp.obj
+CMakeFiles/OOP5.dir/lev_test.cpp.obj.provides.build: CMakeFiles/OOP5.dir/lev_test.cpp.obj
 
 
 CMakeFiles/OOP5.dir/Part2Examples.cpp.obj: CMakeFiles/OOP5.dir/flags.make
@@ -106,13 +106,13 @@ CMakeFiles/OOP5.dir/Part2Examples.cpp.obj.provides.build: CMakeFiles/OOP5.dir/Pa
 
 # Object files for target OOP5
 OOP5_OBJECTS = \
-"CMakeFiles/OOP5.dir/Part1Examples.cpp.obj" \
+"CMakeFiles/OOP5.dir/lev_test.cpp.obj" \
 "CMakeFiles/OOP5.dir/Part2Examples.cpp.obj"
 
 # External object files for target OOP5
 OOP5_EXTERNAL_OBJECTS =
 
-OOP5.exe: CMakeFiles/OOP5.dir/Part1Examples.cpp.obj
+OOP5.exe: CMakeFiles/OOP5.dir/lev_test.cpp.obj
 OOP5.exe: CMakeFiles/OOP5.dir/Part2Examples.cpp.obj
 OOP5.exe: CMakeFiles/OOP5.dir/build.make
 OOP5.exe: CMakeFiles/OOP5.dir/linklibs.rsp
@@ -126,7 +126,7 @@ CMakeFiles/OOP5.dir/build: OOP5.exe
 
 .PHONY : CMakeFiles/OOP5.dir/build
 
-CMakeFiles/OOP5.dir/requires: CMakeFiles/OOP5.dir/Part1Examples.cpp.obj.requires
+CMakeFiles/OOP5.dir/requires: CMakeFiles/OOP5.dir/lev_test.cpp.obj.requires
 CMakeFiles/OOP5.dir/requires: CMakeFiles/OOP5.dir/Part2Examples.cpp.obj.requires
 
 .PHONY : CMakeFiles/OOP5.dir/requires

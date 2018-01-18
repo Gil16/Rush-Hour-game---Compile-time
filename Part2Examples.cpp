@@ -15,7 +15,7 @@ typedef GameBoard< List<
 typedef List<
         Move < B, UP, 1 > , Move < C, LEFT, 4 > , Move < A, LEFT, 2 > , Move < X, LEFT, 2 > , Move < B, UP, 3 > , Move < P, LEFT, 3 > , Move < O, DOWN, 3 >
 > moves;
-
+/*
 int main(){
 
     static_assert(List<BoardCell< EMPTY , RIGHT , 0>,BoardCell< EMPTY , RIGHT , 0>,BoardCell< EMPTY , RIGHT , 0>>::size == 3, "Fail1");
@@ -25,3 +25,4 @@ int main(){
 
     return 0;
 }
+*/

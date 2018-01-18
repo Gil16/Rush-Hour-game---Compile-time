@@ -2,8 +2,8 @@
 #define OOP5_UTILITIES_H
 
 
-template<typename T, typename R>
-struct Conditional<true, T, R>{
+template<bool B, typename T, typename R>
+struct Conditional{
     typedef T value;
 };
 
@@ -13,8 +13,8 @@ struct Conditional<false, T, R>{
 };
 
 
-template<int X,int Y>
-struct ConditionalInteger<true, X, Y>{
+template<bool B, int X,int Y>
+struct ConditionalInteger{
     constexpr static int value = X;
 };
 
