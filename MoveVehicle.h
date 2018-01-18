@@ -20,8 +20,13 @@ struct FindFirstInstanceOfACar{
 };
 
 template<typename L , CellType T, int N>
-struct FindFirstInstanceOfACar<List<L>, T, T, N>{
-    constexpr static int first = N;
+struct FindFirstInstanceOfACar<L, T, T, N>{
+    constexpr static int first = N - 1;
+};
+
+template<typename L , CellType T>
+struct FindFirstInstanceOfACar<L, T, T, 0>{
+    constexpr static int first = 0;
 };
 
 
@@ -31,21 +36,21 @@ struct FindFirstInstanceOfACar<List<L>, T, T, N>{
 // 2) The LOCATION is the end of the new location of the car, and then we will check the number of STEPS to the right.
 template<typename T, int LOCATION, int STEPS, CellType TYPE>
 struct CheckMove{
-    typedef typename CheckMove< typename T::next, LOCATION-1, STEPS, T::next::head::type >::value value;
+    constexpr static bool value = CheckMove< typename T::next, LOCATION-1, STEPS, T::next::head::type >::value;
 };
 
 template<typename T, int STEPS>
-struct CheckMove<List<T>, 0, STEPS, EMPTY>{
-    typedef typename CheckMove<typename T::next, 0, STEPS-1, T::next::head::type>::value value;
+struct CheckMove<T, 0, STEPS, EMPTY>{
+    constexpr static bool value =  CheckMove<typename T::next, 0, STEPS-1, T::next::head::type>::value;
 };
 
 template<typename T, int STEPS, CellType TYPE>
-struct CheckMove<List<T>, 0, STEPS, TYPE>{
+struct CheckMove<T, 0, STEPS, TYPE>{
     constexpr static bool value = false;
 };
 
 template<typename T>
-struct CheckMove<List<T>, 0, 1, EMPTY>{
+struct CheckMove<T, 0, 1, EMPTY>{
     constexpr static bool value = true;
 };
 
@@ -60,7 +65,7 @@ struct OneMove{
 template<typename T, int LOCATION, int LENGTH>
 struct OneMove<T, LOCATION, LENGTH, LEFT>{
     typedef typename GetAtIndex<LOCATION, T>::value CurrentCell;
-    typedef typename SetAtIndex<LOCATION+LENGTH, BoardCell<EMPTY, UP, 0> , typename SetAtIndex<LOCATION-1, CurrentCell ,
+    typedef typename SetAtIndex<LOCATION+LENGTH-1, BoardCell<EMPTY, UP, 0> , typename SetAtIndex<LOCATION-1, CurrentCell ,
             T >::list >::list list;
 };
 
@@ -75,85 +80,88 @@ struct ManyMoves<T, LOCATION, STEPS, LENGTH, LEFT>{
     typedef typename ManyMoves<typename OneMove<T, LOCATION, LENGTH, LEFT>::list, LOCATION-1, STEPS-1, LENGTH, LEFT >::list list;
 };
 
-template<typename T, int LOCATION, int LENGTH, Direction D>
-struct ManyMoves<T, LOCATION, 0, LENGTH, D>{
+template<typename T, int LOCATION, int LENGTH>
+struct ManyMoves<T, LOCATION, 0, LENGTH, LEFT>{
+    typedef T list;
+};
+
+template<typename T, int LOCATION, int LENGTH>
+struct ManyMoves<T, LOCATION, 0, LENGTH, RIGHT>{
     typedef T list;
 };
 
 
 template<typename GB, int R, int C, Direction D, int A>
 struct MoveVehicle{
-    typedef typename GB::board tempBoard;
-    static_assert((R >= tempBoard::length) || (R < 0), "The given Row number is incorrect");
-    static_assert((C >= tempBoard::width) || (C < 0), "The given Col number is incorrect");
-    static_assert(GetAtIndex<C, typename GetAtIndex<R, tempBoard>::value>::value::type != EMPTY , "The given Cell is EMPTY");
-    constexpr static int carDir = GetAtIndex<C, typename GetAtIndex<R, tempBoard>::value >::value::direction;
-    static_assert((carDir % 2) ? ((carDir == D) || ((carDir + 1) == D)) : ((carDir == D) || ((carDir - 1) == D)),
-                  "The given direction is not the excpected");
-    typedef typename Transpose<tempBoard>::matrix aBoard2;
+    typedef GB tempBoard;
+    static_assert((R < tempBoard::length) && (R >= 0), "The given Row number is incorrect");
+    static_assert((C < tempBoard::width) && (C >= 0), "The given Col number is incorrect");
+    static_assert(GetAtIndex<C, typename GetAtIndex<R, typename tempBoard::board>::value>::value::type != EMPTY , "The given Cell is EMPTY");
+    constexpr static int carDir = GetAtIndex<C, typename GetAtIndex<R, typename tempBoard::board>::value >::value::direction;
+    static_assert((carDir == UP )||(carDir == DOWN),
+                  "The given direction is not the expected");
+    typedef typename Transpose<typename tempBoard::board>::matrix aBoard2;
     typedef typename GetAtIndex<C, aBoard2>::value getRow;
     constexpr static int firstInstance = FindFirstInstanceOfACar<getRow, getRow::head::type, GetAtIndex<R,getRow>::value::type,0>::first;
-    static_assert(CheckMove<getRow, firstInstance+(GetAtIndex<R,getRow>::value::length), A, getRow::head::type>::value,
+    static_assert(CheckMove<getRow, firstInstance-A, A, getRow::head::type>::value,
                   "You cannot move RIGHT, there is a car!");
     typedef typename SetAtIndex<C, typename ManyMoves<getRow, firstInstance, A,
             GetAtIndex<R, getRow>::value::length, LEFT>::list, aBoard2>::list newBoard1;
     typedef GameBoard<typename Transpose< newBoard1>::matrix> board;
 };
 
-
 template<typename GB, int R, int C, int A>
-struct MoveVehicle<GB, R, C, RIGHT, A>{
-    typedef typename GB::board tempBoard;
-    static_assert((R >= tempBoard::length) || (R < 0), "The given Row number is incorrect");
-    static_assert((C >= tempBoard::width) || (C < 0), "The given Col number is incorrect");
-    static_assert(GetAtIndex<C, typename GetAtIndex<R, tempBoard>::value>::value::type != EMPTY , "The given Cell is EMPTY");
-    constexpr static int carDir = GetAtIndex<C, typename GetAtIndex<R, tempBoard>::value >::value::direction;
-    static_assert((carDir % 2) ? ((carDir == D) || ((carDir + 1) == D)) : ((carDir == D) || ((carDir - 1) == D)),
-                                                                 "The given direction is not the excpected");
-    typedef typename GetAtIndex<R, tempBoard>::value getRow;
-    constexpr static int firstInstance = FindFirstInstanceOfACar<getRow, getRow::head::type, GetAtIndex<C,getRow>::value::type,0>::first;
-    static_assert(CheckMove<getRow, firstInstance+(GetAtIndex<C,getRow>::value::length), A, getRow::head::type>::value,
-                                                     "You cannot move RIGHT, there is a car!");
-    typedef GameBoard< typename SetAtIndex<R, typename ManyMoves<getRow, firstInstance, A,
-            GetAtIndex<C, getRow>::value::length, RIGHT>::list, tempBoard>::list> board;
+struct MoveVehicle<GB, R, C, DOWN, A>{
+    typedef GB tempBoard;
+    static_assert((R < tempBoard::length) && (R >= 0), "The given Row number is incorrect");
+    static_assert((C < tempBoard::width) && (C >= 0), "The given Col number is incorrect");
+    static_assert(GetAtIndex<C, typename GetAtIndex<R,typename tempBoard::board>::value>::value::type != EMPTY , "The given Cell is EMPTY");
+    constexpr static int carDir = GetAtIndex<C, typename GetAtIndex<R,typename tempBoard::board>::value >::value::direction;
+    static_assert((carDir == UP )||(carDir == DOWN),
+                  "The given direction is not the expected");
+    typedef typename Transpose<typename tempBoard::board>::matrix aBoard2;
+    typedef typename GetAtIndex<C, aBoard2>::value getRow;
+    constexpr static int firstInstance = FindFirstInstanceOfACar<getRow, getRow::head::type, GetAtIndex<R,getRow>::value::type,0>::first;
+    static_assert(CheckMove<getRow, firstInstance+(GetAtIndex<R,getRow>::value::length), A, getRow::head::type>::value,
+                  "You cannot move RIGHT, there is a car!");
+    typedef typename SetAtIndex<C, typename ManyMoves<getRow, firstInstance, A,
+            GetAtIndex<R, getRow>::value::length, RIGHT>::list, aBoard2>::list newBoard1;
+    typedef GameBoard<typename Transpose<newBoard1>::matrix> board;
 };
 
 template<typename GB, int R, int C, int A>
 struct MoveVehicle<GB, R, C, LEFT, A>{
-    typedef typename GB::board tempBoard;
-    static_assert((R >= tempBoard::length) || (R < 0), "The given Row number is incorrect");
-    static_assert((C >= tempBoard::width) || (C < 0), "The given Col number is incorrect");
-    static_assert(GetAtIndex<C, typename GetAtIndex<R, tempBoard>::value>::value::type != EMPTY , "The given Cell is EMPTY");
-    constexpr static int carDir = GetAtIndex<C, typename GetAtIndex<R, tempBoard>::value >::value::direction;
-    static_assert((carDir % 2) ? ((carDir == D) || ((carDir + 1) == D)) : ((carDir == D) || ((carDir - 1) == D)),
-                  "The given direction is not the excpected");
-
-    typedef typename GetAtIndex<R, tempBoard>::value getRow;
+    typedef GB tempBoard;
+    static_assert((R < tempBoard::length) && (R >= 0), "The given Row number is incorrect");
+    static_assert((C < tempBoard::width) && (C >= 0), "The given Col number is incorrect");
+    static_assert(GetAtIndex<C, typename GetAtIndex<R,typename tempBoard::board>::value>::value::type != EMPTY , "The given Cell is EMPTY");
+    constexpr static int carDir = GetAtIndex<C, typename GetAtIndex<R,typename tempBoard::board>::value >::value::direction;
+    static_assert((carDir == LEFT )||(carDir == RIGHT),
+                  "The given direction is not the expected");
+    typedef typename GetAtIndex<R,typename tempBoard::board>::value getRow;
     constexpr static int firstInstance = FindFirstInstanceOfACar<getRow, getRow::head::type, GetAtIndex<C,getRow>::value::type,0>::first;
-
     static_assert(CheckMove<getRow, firstInstance-A, A, getRow::head::type>::value, "You cannot move LEFT, there is a car!");
     typedef GameBoard< typename SetAtIndex<R, typename ManyMoves<getRow, firstInstance, A,
-            GetAtIndex<C, getRow>::value::length, RIGHT>::list, tempBoard>::list> board;
+            GetAtIndex<C, getRow>::value::length, LEFT>::list,typename tempBoard::board>::list> board;
 };
 
 template<typename GB, int R, int C, int A>
-struct MoveVehicle<GB, R, C, DOWN, A>{
-    typedef typename GB::board tempBoard;
-    static_assert((R >= tempBoard::length) || (R < 0), "The given Row number is incorrect");
-    static_assert((C >= tempBoard::width) || (C < 0), "The given Col number is incorrect");
-    static_assert(GetAtIndex<C, typename GetAtIndex<R, tempBoard>::value>::value::type != EMPTY , "The given Cell is EMPTY");
-    constexpr static int carDir = GetAtIndex<C, typename GetAtIndex<R, tempBoard>::value >::value::direction;
-    static_assert((carDir % 2) ? ((carDir == D) || ((carDir + 1) == D)) : ((carDir == D) || ((carDir - 1) == D)),
-                  "The given direction is not the excpected");
-    typedef typename Transpose<tempBoard>::matrix aBoard2;
-    typedef typename GetAtIndex<C, aBoard2>::value getRow;
-    constexpr static int firstInstance = FindFirstInstanceOfACar<getRow, getRow::head::type, GetAtIndex<R,getRow>::value::type,0>::first;
-    static_assert(CheckMove<getRow, firstInstance+(GetAtIndex<R,getRow>::value::length), A, getRow::head::type>::value,
-                      "You cannot move RIGHT, there is a car!");
-    typedef typename SetAtIndex<C, typename ManyMoves<getRow, firstInstance, A,
-                              GetAtIndex<R, getRow>::value::length, RIGHT>::list, aBoard2>::list newBoard1;
-    typedef GameBoard<typename Transpose<newBoard1>::matrix> board;
+struct MoveVehicle<GB, R, C, RIGHT, A>{
+    typedef GB tempBoard;
+    static_assert((R < tempBoard::length) && (R >= 0), "The given Row number is incorrect");
+    static_assert((C < tempBoard::width) && (C >= 0), "The given Col number is incorrect");
+    static_assert(GetAtIndex<C, typename GetAtIndex<R, typename tempBoard::board>::value>::value::type != EMPTY , "The given Cell is EMPTY");
+    constexpr static int carDir = GetAtIndex<C, typename GetAtIndex<R,typename tempBoard::board>::value >::value::direction;
+    static_assert((carDir == LEFT )||(carDir == RIGHT),
+                  "The given direction is not the expected");
+    typedef typename GetAtIndex<R,typename tempBoard::board>::value getRow;
+    constexpr static int firstInstance = FindFirstInstanceOfACar<getRow, getRow::head::type, GetAtIndex<C,getRow>::value::type,0>::first;
+    static_assert(CheckMove<getRow, firstInstance+(GetAtIndex<C,getRow>::value::length), A, getRow::head::type>::value,
+                  "You cannot move RIGHT, there is a car!");
+    typedef GameBoard< typename SetAtIndex<R, typename ManyMoves<getRow, firstInstance, A,
+            GetAtIndex<C, getRow>::value::length, RIGHT>::list,typename tempBoard::board>::list> board;
 };
+
 
 
 

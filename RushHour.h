@@ -39,13 +39,14 @@ struct CheckWin{
     typedef typename GetAtIndex<row, typename T::board>::value redCarRow;
     constexpr static int firstInstance = FindFirstInstanceOfACar<redCarRow, redCarRow::head::type, X, 0>::first;
     constexpr static int redCarSize = GetAtIndex<firstInstance, redCarRow>::value::length;
-    constexpr static bool result = CheckMove<redCarRow, firstInstance + redCarSize, T::board::width - (firstInstance + redCarSize), EMPTY>::value;
+    constexpr static bool result = CheckMove<redCarRow, firstInstance + redCarSize, T::width - (firstInstance + redCarSize), EMPTY>::value;
 };
 
 
 template<typename T, typename MOVES>
 struct CheckSolution{
-    constexpr static int aRow = GetCarRowNumber<typename T::board, MOVES::head::type, 0, T::board::width, false>::value;
+    //static_assert((T::width == 6),"oops");
+    constexpr static int aRow = GetCarRowNumber<typename T::board, MOVES::head::type, 0, T::width, false>::value;
     constexpr static int aCol = FindFirstInstanceOfACar<
             typename GetAtIndex<aRow, typename T::board>::value, GetAtIndex<aRow, typename T::board>::value::head::type
                              , MOVES::head::type, 0>::first;

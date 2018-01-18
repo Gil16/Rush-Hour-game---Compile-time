@@ -7,8 +7,8 @@
 template<typename T>
 struct GameBoard{
     typedef T board;
-    constexpr static int width = sizeof(board::head);
-    constexpr static int length = sizeof(board);
+    constexpr static int width = board::head::size;
+    constexpr static int length = board::size;
 };
 
 #endif //OOP5_GAMEBOARD_H

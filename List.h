@@ -12,9 +12,19 @@ public:
     constexpr static int size = sizeof...(TT) + 1;
 };
 
+template <typename T>
+struct List<T>{
+public:
+    typedef T head;
+    typedef List<> next;
+    constexpr static int size = 1;
+};
+
 template <>
 struct List<>{
 public:
+    typedef List<> head;
+    typedef List<> next;
     constexpr static int size = 0;
 };
 

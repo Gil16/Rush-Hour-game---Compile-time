@@ -24,7 +24,7 @@ public:
     }
 };
 int AirConditioner::nextId = 0;
-
+/*
 int main(){
     TemperatureSensor s;
     AirConditioner a,b,c;
@@ -51,3 +51,4 @@ int main(){
 
     return 0;
 }
+*/
