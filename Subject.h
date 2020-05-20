@@ -43,7 +43,7 @@ void Subject<T>::addObserver(Observer<T>& ob) {
 
 template<typename T>
 void Subject<T>::removeObserver(Observer<T>& ob) {
-    if((std::find(observers->begin(), observers->end(), &ob)) != observers->end()){      // theoretical ?end?
+    if((std::find(observers->begin(), observers->end(), &ob)) != observers->end()){
         observers->remove(&ob);
     }
     throw ObserverUnknownToSubject();

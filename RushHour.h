@@ -50,7 +50,6 @@ struct CheckWin{
 
 template<typename T, typename MOVES>
 struct CheckSolution{
-    //static_assert((T::width == 6),"oops");
     constexpr static int aRow = GetCarRowNumber<typename T::board, MOVES::head::type, 0, T::width, false>::value;
     constexpr static int aCol = FindFirstInstanceOfACar<
             typename GetAtIndex<aRow, typename T::board>::value, GetAtIndex<aRow, typename T::board>::value::head::type

@@ -1,7 +1,3 @@
-//
-// Created by Omer on 9/21/2017.
-//
-
 #ifndef PART1_OOP5EVENTEXCEPTION_H
 #define PART1_OOP5EVENTEXCEPTION_H
 

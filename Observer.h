@@ -9,10 +9,9 @@ public:
     virtual void handleEvent(const T&) = 0;
 
     bool operator==(Observer& ob1){
-        return (&ob1 == this);  // ??
+        return (&ob1 == this);
     }
 };
-
 
 
 
