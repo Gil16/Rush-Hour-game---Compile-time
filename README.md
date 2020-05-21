@@ -1,6 +1,17 @@
 The 5th homework of OOP course 
 
-We are building the Rush Hour game on compile time!
+We are building the Rush Hour game in compile time!
+
+https://en.wikipedia.org/wiki/Rush_Hour_(puzzle)
+
+In this project, we wish to get red car aka:"X X" to the right side of the board.
+
+In a given board, it will solve the game in minimal number of moves and will print every change in the board.
+
+Car types: 
+
+![alt text](https://github.com/Gil16/RushHourGame-CompileTime/blob/master/car_types.PNG?raw=true)
+
 
 
 Example:
