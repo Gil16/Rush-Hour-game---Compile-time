@@ -1,6 +1,6 @@
 The 5th homework of OOP course 
 
-We are building the Rush Hour game in compile time!
+We are building the Rush Hour game on compile time!
 
 https://en.wikipedia.org/wiki/Rush_Hour_(puzzle)
 
@@ -16,14 +16,6 @@ Car types:
 
 Example:
 ```
-Game Board:
- _ _ _ R _ _
- _ _ _ R _ _
- _ X X R _ P
- _ C D D _ P
- _ C _ _ _ P
- _ _ _ _ F F
-
 Game Board:
  _ _ _ R _ _
  _ _ _ R _ _
